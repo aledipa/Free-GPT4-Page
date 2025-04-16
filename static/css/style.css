@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a2f2e 0%, #173f3a 100%);
+    color: #f8fafc;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #20c997 0%, #00b894 50%, #009688 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.glow-card {
+    box-shadow: 0 0 20px rgba(32, 201, 151, 0.3);
+    transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+    box-shadow: 0 0 30px rgba(32, 201, 151, 0.5);
+    transform: translateY(-5px);
+}
+
+.code-block {
+    background-color: #173f3a;
+    border-left: 4px solid #20c997;
+}
+
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(32, 201, 151, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #20c997 0%, #00b894 100%);
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.model-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
