@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free-GPT4-WEB-API | Self-Hosted AI API Server</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glow-card {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-card:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .code-block {
+            background-color: #1e293b;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .model-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="animated-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-robot text-white"></i>
+                </div>
+                <span class="text-xl font-bold">Free-GPT4-WEB-API</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="hover:text-blue-400 transition">Features</a>
+                <a href="#how-it-works" class="hover:text-blue-400 transition">How It Works</a>
+                <a href="#get-started" class="hover:text-blue-400 transition">Get Started</a>
+                <a href="https://github.com/aledipa/Free-GPT4-WEB-API" target="_blank" class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 py-20 md:py-32">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span class="gradient-text">FreeGPT4</span><br>
+                    <span>WEB API Server</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    A Python server that allows you to have a self-hosted, unlimited and free WEB API for GPT-4, GPT-4-turbo, GPT-3.5-turbo, and more.
+                </p>
+                
+                <div class="flex flex-wrap mb-8">
+                    <span class="model-badge bg-blue-500/20 text-blue-400">GPT-4</span>
+                    <span class="model-badge bg-purple-500/20 text-purple-400">GPT-4-turbo</span>
+                    <span class="model-badge bg-green-500/20 text-green-400">GPT-3.5-turbo</span>
+                    <span class="model-badge bg-yellow-500/20 text-yellow-400">Claude-3-opus</span>
+                    <span class="model-badge bg-red-500/20 text-red-400">Claude-3-sonnet</span>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#get-started" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg">
+                        Get Started Now
+                    </a>
+                    <a href="https://github.com/aledipa/Free-GPT4-WEB-API" target="_blank" class="border border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition flex items-center justify-center space-x-2">
+                        <i class="fab fa-github"></i>
+                        <span>View on GitHub</span>
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative max-w-md">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-75"></div>
+                    <div class="relative bg-gray-800 rounded-xl p-6 glow-card">
+                        <div class="flex items-center mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="code-block p-4 rounded-lg mb-4">
+                            <code class="text-gray-300">
+                                <span class="text-purple-400">import</span> requests<br><br>
+                                <span class="text-blue-400">response</span> = requests.post(<br>
+                                &nbsp;&nbsp;<span class="text-green-400">"http://localhost:1337/v1/chat/completions"</span>,<br>
+                                &nbsp;&nbsp;json={<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">"model"</span>: <span class="text-green-400">"gpt-4"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">"messages"</span>: [{<span class="text-yellow-400">"role"</span>: <span class="text-green-400">"user"</span>, <span class="text-yellow-400">"content"</span>: <span class="text-green-400">"Hello!"</span>}]<br>
+                                &nbsp;&nbsp;}<br>
+                                )
+                            </code>
+                        </div>
+                        <div class="code-block p-4 rounded-lg">
+                            <code class="text-gray-300">
+                                <span class="text-gray-500"># Response:</span><br>
+                                {<br>
+                                &nbsp;&nbsp;<span class="text-yellow-400">"id"</span>: <span class="text-green-400">"chatcmpl-123"</span>,<br>
+                                &nbsp;&nbsp;<span class="text-yellow-400">"object"</span>: <span class="text-green-400">"chat.completion"</span>,<br>
+                                &nbsp;&nbsp;<span class="text-yellow-400">"choices"</span>: [{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">"message"</span>: {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">"role"</span>: <span class="text-green-400">"assistant"</span>,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">"content"</span>: <span class="text-green-400">"Hello! How can I help you?"</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;}]<br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Key Features</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Everything you need to integrate cutting-edge AI into your applications
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-800/50 p-8 rounded-xl glow-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Unlimited & Free</h3>
+                    <p class="text-gray-300">
+                        No rate limits, no usage caps. Get unlimited access to GPT-4, GPT-4-turbo, and other models completely free.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-800/50 p-8 rounded-xl glow-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Self-Hosted</h3>
+                    <p class="text-gray-300">
+                        Full control over your AI infrastructure. Host it on your own servers for maximum privacy and customization.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-gray-800/50 p-8 rounded-xl glow-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multiple Models</h3>
+                    <p class="text-gray-300">
+                        Access GPT-4, GPT-4-turbo, GPT-3.5-turbo, Claude-3-opus, Claude-3-sonnet, and more with a simple API call.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-gray-800/50 p-8 rounded-xl glow-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Privacy Focused</h3>
+                    <p class="text-gray-300">
+                        Your data never leaves your infrastructure. Perfect for sensitive applications where privacy is critical.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-gray-800/50 p-8 rounded-xl glow-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">OpenAI Compatible</h3>
+                    <p class="text-gray-300">
+                        Uses the same API structure as OpenAI, making it a drop-in replacement for existing applications.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-gray-800/50 p-8 rounded-xl glow-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Easy to Use</h3>
+                    <p class="text-gray-300">
+                        Simple setup with Docker or Python. Get started in minutes with comprehensive documentation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Get up and running in minutes with our simple setup process
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
+                    <h3 class="text-2xl font-bold mb-4">1. Install with Docker</h3>
+                    <p class="text-gray-300 mb-6">
+                        The easiest way to get started is using Docker. Just pull the image and run it with a single command.
+                    </p>
+                    <div class="code-block p-4 rounded-lg">
+                        <code class="text-gray-300">
+                            docker pull aledipa/free-gpt4-web-api<br>
+                            docker run -p 1337:1337 aledipa/free-gpt4-web-api
+                        </code>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-gray-800 p-6 rounded-xl glow-card">
+                        <i class="fab fa-docker text-5xl text-blue-500 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Docker Installation</h4>
+                        <p class="text-gray-300">Simplest way to get started</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row-reverse items-center mb-16">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4">2. Or Install with Python</h3>
+                    <p class="text-gray-300 mb-6">
+                        Alternatively, you can install directly with Python and run the server manually.
+                    </p>
+                    <div class="code-block p-4 rounded-lg">
+                        <code class="text-gray-300">
+                            git clone https://github.com/aledipa/Free-GPT4-WEB-API.git<br>
+                            cd Free-GPT4-WEB-API<br>
+                            pip install -r requirements.txt<br>
+                            python -m Free_GPT4_WEB_API
+                        </code>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-gray-800 p-6 rounded-xl glow-card">
+                        <i class="fab fa-python text-5xl text-green-500 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Python Installation</h4>
+                        <p class="text-gray-300">For more customization options</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
+                    <h3 class="text-2xl font-bold mb-4">3. Make API Calls</h3>
+                    <p class="text-gray-300 mb-6">
+                        Use the OpenAI-compatible API from any programming language or tool that supports HTTP requests.
+                    </p>
+                    <div class="code-block p-4 rounded-lg">
+                        <code class="text-gray-300">
+                            <span class="text-purple-400">import</span> openai<br><br>
+                            openai.api_base = <span class="text-green-400">"http://localhost:1337/v1"</span><br>
+                            response = openai.ChatCompletion.create(<br>
+                            &nbsp;&nbsp;model=<span class="text-green-400">"gpt-4"</span>,<br>
+                            &nbsp;&nbsp;messages=[{<span class="text-green-400">"role"</span>: <span class="text-green-400">"user"</span>, <span class="text-green-400">"content"</span>: <span class="text-green-400">"Hello!"</span>}]<br>
+                            )
+                        </code>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-gray-800 p-6 rounded-xl glow-card">
+                        <i class="fas fa-terminal text-5xl text-purple-500 mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">API Integration</h4>
+                        <p class="text-gray-300">Works with any programming language</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Get Started -->
+    <section id="get-started" class="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Join hundreds of developers who are already using Free-GPT4-WEB-API to power their AI applications.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="https://github.com/aledipa/Free-GPT4-WEB-API" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg flex items-center justify-center space-x-2">
+                        <i class="fab fa-github"></i>
+                        <span>View on GitHub</span>
+                    </a>
+                    <a href="https://github.com/aledipa/Free-GPT4-WEB-API/archive/main.zip" class="border border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition flex items-center justify-center space-x-2">
+                        <i class="fas fa-download"></i>
+                        <span>Download Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Everything you need to know about Free-GPT4-WEB-API
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-6">
+                    <div class="bg-gray-800/50 p-6 rounded-xl glow-card">
+                        <h3 class="text-xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-question-circle text-blue-500 mr-3"></i>
+                            Is this really free?
+                        </h3>
+                        <p class="text-gray-300">
+                            Yes! Free-GPT4-WEB-API is 100% free and open source under the MIT license. There are no hidden costs or premium tiers.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="bg-gray-800/50 p-6 rounded-xl glow-card">
+                        <h3 class="text-xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-question-circle text-purple-500 mr-3"></i>
+                            What models are supported?
+                        </h3>
+                        <p class="text-gray-300">
+                            Currently supports GPT-4, GPT-4-turbo, GPT-3.5-turbo, Claude-3-opus, and Claude-3-sonnet. Check the GitHub repository for the latest supported models.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="bg-gray-800/50 p-6 rounded-xl glow-card">
+                        <h3 class="text-xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-question-circle text-green-500 mr-3"></i>
+                            Can I use this in production?
+                        </h3>
+                        <p class="text-gray-300">
+                            Absolutely! Many developers are already using Free-GPT4-WEB-API in production environments. However, as with any self-hosted solution, ensure you have proper monitoring in place.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="bg-gray-800/50 p-6 rounded-xl glow-card">
+                        <h3 class="text-xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-question-circle text-yellow-500 mr-3"></i>
+                            How does this compare to official APIs?
+                        </h3>
+                        <p class="text-gray-300">
+                            Free-GPT4-WEB-API provides the same capabilities as official APIs but with no usage limits and complete control over your infrastructure. The main difference is that you need to host it yourself.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="bg-gray-800/50 p-6 rounded-xl glow-card">
+                        <h3 class="text-xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-question-circle text-red-500 mr-3"></i>
+                            What are the system requirements?
+                        </h3>
+                        <p class="text-gray-300">
+                            The server can run on any machine with Python 3.8+ or Docker. For optimal performance with larger models, we recommend at least 16GB RAM and a modern CPU.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-6 md:mb-0">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-robot text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold">Free-GPT4-WEB-API</span>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#features" class="hover:text-blue-400 transition">Features</a>
+                    <a href="#how-it-works" class="hover:text-blue-400 transition">How It Works</a>
+                    <a href="#get-started" class="hover:text-blue-400 transition">Get Started</a>
+                    <a href="https://github.com/aledipa/Free-GPT4-WEB-API" target="_blank" class="hover:text-blue-400 transition">GitHub</a>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://github.com/aledipa/Free-GPT4-WEB-API" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 Free-GPT4-WEB-API. All rights reserved. Open source under MIT license.</p>
+                <p class="mt-2">Created by <a href="https://github.com/aledipa" target="_blank" class="text-blue-400 hover:text-blue-300">aledipa</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple animation for the hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            const hero = document.querySelector('section');
+            hero.style.opacity = '0';
+            hero.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                hero.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                hero.style.opacity = '1';
+                hero.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
