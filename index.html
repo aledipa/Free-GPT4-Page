@@ -8,7 +8,8 @@
     <!-- <title>Free-GPT4-WEB-API | Self-Hosted AI API Server</title> -->
     <title>Free GPT4 API</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" href="https://github.com/aledipa/Free-GPT4-WEB-API/blob/main/src/static/img/favicon(Nicoladipa).png?raw=true" type="image/svg">
     <link rel="stylesheet" href="static/css/style.css" type="text/css">
 </head>
 <body class="min-h-screen">
@@ -156,13 +157,16 @@
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="bt8/5 p-8 rounded-xl glow-card">
+                <div class="bt8/5 p-8 rounded-xl glow-card relative">
+                    <span class="absolute top-4 right-4 bg-teal-700 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase tracking-wide">
+                        Coming Soon!
+                    </span>
                     <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Privacy Focused</h3>
+                    <h3 class="text-xl font-bold mb-3">Multi User Support</h3>
                     <p class="text-[#d1dbd9]">
-                        Your data never leaves your infrastructure. Perfect for sensitive applications where privacy is critical.
+                        Manage as much virtual users as you want with custom settings and behaviours.
                     </p>
                 </div>
                 
@@ -234,13 +238,14 @@
                             git clone https://github.com/aledipa/Free-GPT4-WEB-API.git<br>
                             cd Free-GPT4-WEB-API<br>
                             pip install -r requirements.txt<br>
-                            python -m Free_GPT4_WEB_API
+                            cd src<br>
+                            python -m FreeGPT4_Server
                         </code>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
                     <div class="bg-[#1c3a34] p-6 rounded-xl glow-card">
-                        <i class="fab fa-python text-5xl text-green-500 mb-4"></i>
+                        <i class="fab fa-python text-5xl text-yellow-500 mb-4"></i>
                         <h4 class="text-xl font-bold mb-2">Python Installation</h4>
                         <p class="text-[#d1dbd9]">For more customization options</p>
                     </div>
@@ -266,7 +271,7 @@
                 </div>
                 <div class="md:w-1/2 flex justify-center">
                     <div class="bg-[#1c3a34] p-6 rounded-xl glow-card">
-                        <i class="fas fa-terminal text-5xl text-purple-500 mb-4"></i>
+                        <i class="fas fa-terminal text-5xl text-green-500 mb-4"></i>
                         <h4 class="text-xl font-bold mb-2">API Integration</h4>
                         <p class="text-[#d1dbd9]">Works with any programming language</p>
                     </div>
@@ -351,7 +356,7 @@
                             What are the system requirements?
                         </h3>
                         <p class="text-[#d1dbd9]">
-                            The server can run on any machine with Python 3.8+ or Docker. For optimal performance with larger models, we recommend at least 16GB RAM and a modern CPU.
+                            The server can run on any machine with Python 3.8+ or Docker. It's very lightweight.
                         </p>
                     </div>
                 </div>
@@ -378,14 +383,14 @@
                 </div>
                 
                 <div class="flex space-x-4">
-                    <a href="www.linkedin.com/in/alessandro-di-pasquale-4661b6239" target="_blank" class="w-10 h-10 rounded-full bg-[#1c3a34] hover:bg-teal-700 flex items-center justify-center transition">
-                        <i class="fab fa-linkedin"></i>
+                    <a href="https://aledipa.github.io/" target="_blank" class="w-10 h-10 rounded-full bg-[#1c3a34] hover:bg-teal-700 flex items-center justify-center transition">
+                        <img src="static/img/aledipa_white.svg" width="24" alt="AleDipa's logo (handwritten letter A)"/>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-[#1c3a34] hover:bg-teal-700 flex items-center justify-center transition">
-                        <i class="fab fa-discord"></i>
+                    <a href="https://git-malik.github.io/" target="_blank" class="w-10 h-10 rounded-full bg-[#1c3a34] hover:bg-teal-700 flex items-center justify-center transition">
+                        <i class="fa-brands fa-debian"></i>
                     </a>
-                    <a href="https://github.com/aledipa/Free-GPT4-WEB-API" target="_blank" class="w-10 h-10 rounded-full bg-[#1c3a34] hover:bg-teal-700 flex items-center justify-center transition">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/alessandroberna" target="_blank" class="w-10 h-10 rounded-full bg-[#1c3a34] hover:bg-teal-700 flex items-center justify-center transition">
+                        <img src="static/img/doge_white(OnlineWebFonts).svg" width="24" alt="AlessandroBerna's logo (Doge dog meme)"/>
                     </a>
                 </div>
             </div>
